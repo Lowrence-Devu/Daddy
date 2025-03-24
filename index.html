@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Daddy!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffc182; /* Dark background for candles */
+            color: #000000;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .short-wish {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            color: #d89aaa;
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: fadeOut 7s ease-in-out forwards;
+            z-index: 10;
+        }
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .candles-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(0, 0, 0); /* Add background image */
+            background-size: cover;
+            background-position: center;
+        }
+        .candle {
+            width: 20px;
+            height: 100px;
+            background-color: #ffd828;
+            margin: 0 30px;
+            position: relative;
+            border-radius: 5px;
+        }
+        .flame {
+            width: 15px;
+            height: 25px;
+            background: radial-gradient(circle, orange, red);
+            border-radius:  100px 0px 100px 0px / 100px 0px 100px 0px;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.6s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.2); }
+        }
+        .extinguished {
+            background: transparent;
+            animation: none;
+        }
+        .smoke {
+            width: 5px;
+            height: 5px;
+            background: radial-gradient(circle, rgba(61, 61, 61, 0.8), transparent);
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 100px 100px 0 0 / 100px 100px 0 0;
+            opacity: 0;
+            animation: rise 3s ease-out forwards;
+        }
+        @keyframes rise {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-50px) scale(1.5);
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .hidden {
+            display: none;
+        }
+        .wish-after-blow {
+            font-family: 'Dancing Script', cursive; /* Updated font */
+            font-size: 3rem;
+            color: #c1fdff;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none;
+            z-index: 20;
+        }
+        .container {
+            display: none;
+            margin-top: 50px;
+            text-align: center;
+            background-image: url('images/photo2.jpg'); /* Add background image */
+            background-size: cover;
+            background-position: center;
+            color: #000000;
+            padding: 20px;
+        }
+        .container h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .container.active {
+            display: block;
+        }
+        .container p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        .container.active {
+            display: block;
+        }
+        h1 {
+            color: #ff6347;
+        }
+        .message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+        .cake {
+            margin-top: 30px;
+            font-size: 3rem;
+        }
+        .photo-gallery {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-in;
+        }
+    
+        .photo-gallery img {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px; /* Rounded corners */
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+            border: 4px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
+        }
+    
+        .photo-gallery img:hover {
+            transform: scale(1.2) rotate(5deg); /* Scale and slight rotation */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+            filter: brightness(1.2); /* Brighten the image */
+            border-color: #77faff; /* Change border color on hover */
+        }
+    
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .photo-gallery img:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .photo-gallery img:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .photo-gallery img:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+        }
+            /* Confetti Animation */
+            .confetti {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: #ffcc00;
+                animation: fall 3s linear infinite;
+            }
+    
+            @keyframes fall {
+                0% {
+                    transform: translateY(-100px) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            .bible-verses {
+                margin-top: 20px;
+                font-family: 'Dancing Script', cursive;
+                font-size: 1.5rem;
+                color: #fff;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+        
+            .bible-verses p {
+                margin: 10px 0;
+                line-height: 1.6;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+    </style>
+</head>
+<body>
+    <!-- Short Wish -->
+    <div class="short-wish">Happy Birthday!!   🎉Daddy! 🎉</div>
+
+    <!-- Candles Section -->
+    <div class="candles-container">
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+    </div>
+
+    <!-- Wish After Blowing Candles -->
+    <div class="wish-after-blow">Love uhh sooo muchhhh daddyyy❤️</div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Happy 47th Birthday, Daddy!</h1>
+        <p class="message">You are the best dad in the world! Thank you for all the love, care, and support you give us every day. We love you so much!
+            <br>You are my Heroooo!!!
+        </p>
+        <div class="cake">
+            🎂🎉🎁
+        </div>
+        <div class="bible-verses">
+            <p>"The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you; the Lord turn his face toward you and give you peace." – Numbers 6:24-26</p>
+            <p>"For I know the plans I have for you,” declares the Lord, “plans to prosper you and not to harm you, plans to give you hope and a future." – Jeremiah 29:11</p>
+            <p>"This is the day that the Lord has made; let us rejoice and be glad in it." – Psalm 118:24</p>
+        </div>
+        <div class="photo-gallery">
+            <img src="WhatsApp Image 2025-03-24 at 21.12.35.jpeg" alt="Photo 1">
+
+            <img src="5B5AE5F8-34FC-4D62-A256-C2D37DD48E92_1_105_c.jpeg" alt="Photo 3">
+            <img src="E3B92347-658A-438E-B701-82C7AAFEE1C5_1_105_c.jpeg" alt="Photo 2"> 
+        </div>
+    </div>
+
+    <script>
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = `${Math.random() * 100}vw`;
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+         
+        // Hide the short wish after animation
+        setTimeout(() => {
+            document.querySelector('.short-wish').classList.add('hidden');
+        }, 3000);
+
+        // Access the microphone
+        navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const analyser = audioContext.createAnalyser();
+                const microphone = audioContext.createMediaStreamSource(stream);
+                const dataArray = new Uint8Array(analyser.fftSize);
+                microphone.connect(analyser);
+
+                function detectBlow() {
+                    analyser.getByteTimeDomainData(dataArray);
+                    let maxVolume = Math.max(...dataArray);
+                    if (maxVolume > 200) { // Adjust threshold for blowing detection
+                        extinguishCandles();
+                        showWish();
+                    }
+                    requestAnimationFrame(detectBlow);
+                }
+
+                function extinguishCandles() {
+                    const flames = document.querySelectorAll('.flame');
+                    flames.forEach(flame => {
+                        flame.classList.add('extinguished');
+                        const smoke = document.createElement('div');
+                        smoke.classList.add('smoke');
+                        flame.parentElement.appendChild(smoke);
+                    });
+                }
+
+                function showWish() {
+                    const wish = document.querySelector('.wish-after-blow');
+                    wish.style.display = 'block';
+                    setTimeout(() => {
+                        wish.style.display = 'none';
+                        showContent();
+                    }, 3000); // Show the wish for 3 seconds
+                }
+
+                function showContent() {
+                    document.querySelector('.candles-container').classList.add('hidden');
+                    document.querySelector('.container').classList.add('active');
+                }
+
+                detectBlow();
+            })
+            .catch(error => {
+                console.error('Microphone access denied:', error);
+            });
+    </script>
+</body>
+</html>
