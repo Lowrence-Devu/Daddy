@@ -159,13 +159,14 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            animation: fadeIn 1s ease-in;
+            animation: fadeIn 5s ease-in;
+            animation: zoomIn 3s ease;
         }
     
         .photo-gallery img {
-            width: 150px;
-            height: 150px;
-            border-radius: 15px; /* Rounded corners */
+            width: 500px;
+            height:500px;
+            border-radius: 50%; /* Rounded corners */
             object-fit: cover;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for depth */
             transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
@@ -173,9 +174,9 @@
         }
     
         .photo-gallery img:hover {
-            transform: scale(1.2) rotate(5deg); /* Scale and slight rotation */
+            transform: scale(5.2) rotate(5deg); /* Scale and slight rotation */
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
-            filter: brightness(1.2); /* Brighten the image */
+            filter: brightness(1.2), saturate(1.2), contrast(1.2); /* Brighten the image */
             border-color: #77faff; /* Change border color on hover */
         }
     
@@ -243,7 +244,7 @@
                 color: #fff;
                 background: rgba(0, 0, 0, 0.5);
                 padding: 20px;
-                border-radius: 10px;
+                border-radius:50px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             }
         
@@ -254,6 +255,105 @@
             html {
                 scroll-behavior: smooth;
             }
+            /* Balloons Section */
+.balloons-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1200px;
+    overflow: hidden;
+    z-index: 4;
+    pointer-events: none; /* Prevent interaction with balloons */
+}
+
+.balloon {
+    position: absolute;
+    bottom: -250px;
+    width: 90px;
+    height: 130px;
+    background-color: #ff6f61;
+    border-radius: 50%;
+    animation: floatUp 10s linear infinite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    width: 2px;
+    height: 60px;
+    background-image: linear-gradient(to bottom, #fff 50%, transparent 50%);
+    background-size: 4px 8px; /* Creates the wavy effect */
+    transform: translateX(-50%);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(30px) translateY(-500px) scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(-30px) translateY(-1200px) scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+/* Randomize Balloon Positions */
+.balloon:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.balloon:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.balloon:nth-child(3) {
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.balloon:nth-child(4) {
+    left: 70%;
+    animation-delay: 6s;
+}
+
+.balloon:nth-child(5) {
+    left: 20%;
+    animation-delay: 8s;
+}
+.balloon:nth-child(6) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.balloon:nth-child(7) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.balloon:nth-child(8) {
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.balloon:nth-child(9) {
+    left: 70%;
+    animation-delay: 6s;
+}
+
+.balloon:nth-child(10) {
+    left: 20%;
+    animation-delay: 8s;
+}
     </style>
 </head>
 <body>
@@ -307,7 +407,23 @@
 
             <img src="5B5AE5F8-34FC-4D62-A256-C2D37DD48E92_1_105_c.jpeg" alt="Photo 3">
             <img src="E3B92347-658A-438E-B701-82C7AAFEE1C5_1_105_c.jpeg" alt="Photo 2"> 
+            <img src="WhatsApp Image 2025-03-25 at 08.00.59.jpeg" alt="Photo 4">
+            <img src="photo-output 6.jpeg" alt="Photo 5">
+
         </div>
+        <!-- Balloons Section -->
+<div class="balloons-container">
+    <div class="balloon" style="background-color: #ff6f61;"></div>
+    <div class="balloon" style="background-color: #6a5acd;"></div>
+    <div class="balloon" style="background-color: #ffcc00;"></div>
+    <div class="balloon" style="background-color: #77dd77;"></div>
+    <div class="balloon" style="background-color: #ffb347;"></div>
+    <div class="balloon" style="background-color: #ff6f61;"></div>
+    <div class="balloon" style="background-color: #6a5acd;"></div>
+    <div class="balloon" style="background-color: #ffcc00;"></div>
+    <div class="balloon" style="background-color: #77dd77;"></div>
+    <div class="balloon" style="background-color: #ffb347;"></div>
+</div>
     </div>
 
     <script>
